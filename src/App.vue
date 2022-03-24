@@ -1,20 +1,19 @@
 <template>
   <v-app>
-    <AppTags :tags="tags">
-      <v-icon
-        large
-        color="purple darken-2"
-      >
-        mdi-message-text
-      </v-icon>
-    </AppTags>
+    <AppTags :tags="tags" />
   </v-app>
 </template>
 
 <script>
 import AppTags from '@/components/AppTags';
 
-const tags = [ 'Фридландские ворота', 'Бранденбургские ворота', 'Закхаймские ворота' ];
+const tags = [
+  { title: 'Фридландские ворота Фридландские ворота Фридландские ворота Фридландские ворота', iconTitle: 'mdi-call-split' },
+  { title: 'Бранденбургские ворота', iconTitle: 'mdi-domain' },
+  { title: 'Закхаймские ворота', iconTitle: 'mdi-dialpad' },
+  { title: 'Россгартенские ворота Россгартенские ворота Россгартенские ворота', iconTitle: 'mdi-call-split' },
+  { title: 'Аусфальские ворота', iconTitle: 'mdi-domain' },
+];
 
 export default {
   name: 'App',

@@ -6,10 +6,32 @@
       ref="tags"
       class="tags__tag"
     >
-      <slot></slot>
+      <v-icon
+        large
+        color="purple darken-2"
+      >
+        {{ tag.iconTitle }}
+      </v-icon>
+
       4.3
-      <span>&middot; {{ tag }}</span>
-      <span>&middot; 1,2 км от вас</span>
+
+      <v-icon
+        small
+        color="blue"
+      >
+        mdi-circle-medium
+      </v-icon>
+
+      {{ tag.title }}
+
+      <v-icon
+        small
+        color="blue"
+      >
+        mdi-circle-medium
+      </v-icon>
+
+      1,2 км от вас
     </li>
   </ul>
 </template>
@@ -22,7 +44,7 @@ export default {
     tags: {
       type: Array,
       required: true
-    }
+    },
   },
 
   created() {
