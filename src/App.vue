@@ -1,27 +1,34 @@
 <template>
-  <div id="app">
-    <AppTags :tags="tags"/>
-  </div>
+  <v-app>
+    <AppTags :tags="tags">
+      <v-icon
+        large
+        color="purple darken-2"
+      >
+        mdi-message-text
+      </v-icon>
+    </AppTags>
+  </v-app>
 </template>
 
 <script>
-import AppTags from '@/components/AppTags.vue'
+import AppTags from '@/components/AppTags';
 
-const tags = [ 'Фридландские ворота', 'Бранденбургские ворота', 'Закхаймские ворота' ]
+const tags = [ 'Фридландские ворота', 'Бранденбургские ворота', 'Закхаймские ворота' ];
 
 export default {
   name: 'App',
 
   components: {
-    AppTags
+    AppTags,
   },
 
   data() {
     return {
       tags
     }
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

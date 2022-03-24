@@ -6,7 +6,10 @@
       ref="tags"
       class="tags__tag"
     >
-      <span>иконка 4.3</span> <span>&middot; {{ tag }}</span> <span>&middot; 1,2 км от вас</span>
+      <slot></slot>
+      4.3
+      <span>&middot; {{ tag }}</span>
+      <span>&middot; 1,2 км от вас</span>
     </li>
   </ul>
 </template>
