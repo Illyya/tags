@@ -1,0 +1,1 @@
+.tags{display:inline-flex;align-items:baseline}.tags--width{justify-content:space-between}.tags__tag{position:relative;white-space:nowrap}.tags__tag:not(.tags__tag:last-of-type){margin-right:20px}.tags__tag:first-of-type:before{content:none}*{padding:0;margin:0;border:0}ul li{list-style:none}
