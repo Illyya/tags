@@ -1,10 +1,17 @@
 <template>
   <v-app>
+    <div class="text-center">
+      <v-btn @click="isTagsWidth = !isTagsWidth" class="mt-5 mb-5">
+        <template v-if="isTagsWidth">По левому краю</template>
+        <template v-else>По ширине</template>
+      </v-btn>
+    </div>
+
     <AppTags
       v-for="(tags, index) in tagsList"
       :key="index"
       :tags="tags"
-      :isTagsWidth="false"
+      :isTagsWidth="isTagsWidth"
     />
   </v-app>
 </template>
@@ -57,7 +64,8 @@ export default {
 
   data() {
     return {
-      tagsList
+      tagsList,
+      isTagsWidth: false
     }
   },
 };

@@ -54,6 +54,12 @@ export default {
     window.removeEventListener('resize', this.checkWidthTag);
   },
 
+  watch: {
+    isTagsWidth() {
+      this.checkWidthTag();
+    }
+  },
+
   methods: {
     checkWidthTag() {
       this.$refs.tags.forEach((el) => {
@@ -67,6 +73,14 @@ export default {
               const distance = (leftEl - rightElPrev) / 2;
 
               separator.style.left = '-' + distance + 'px';
+            }
+          })
+        } else {
+          this.$nextTick(() => {
+            if (el.previousElementSibling) {
+              const separator = el.querySelector('.separator');
+
+              separator.style.left = '-10px';
             }
           })
         }
@@ -108,9 +122,5 @@ export default {
       content: none;
     }
   }
-}
-
-.separator {
-  left: -10px;
 }
 </style>
