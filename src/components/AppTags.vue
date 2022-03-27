@@ -1,5 +1,5 @@
 <template>
-  <ul class="tags">
+  <ul :class="{ 'tags--width': isTagsWidth }" class="tags">
     <li
       v-for="(tag, index) in tags"
       :key="index"
@@ -7,31 +7,22 @@
       class="tags__tag"
     >
       <v-icon
-        large
+        v-if="index !== 0"
+        small
         color="purple darken-2"
+        class="separator"
       >
-        {{ tag.iconTitle }}
+        mdi-circle-small
       </v-icon>
-
-      4.3
 
       <v-icon
         small
-        color="blue"
+        color="purple darken-2"
       >
-        mdi-circle-medium
+        {{ tag.icon }}
       </v-icon>
 
       {{ tag.title }}
-
-      <v-icon
-        small
-        color="blue"
-      >
-        mdi-circle-medium
-      </v-icon>
-
-      1,2 км от вас
     </li>
   </ul>
 </template>
@@ -45,10 +36,18 @@ export default {
       type: Array,
       required: true
     },
+    isTagsWidth: {
+      type: Boolean,
+      required: true
+    }
   },
 
   created() {
     window.addEventListener('resize', this.checkWidthTag);
+  },
+
+  mounted () {
+    this.checkWidthTag();
   },
 
   beforeDestroy() {
@@ -58,10 +57,24 @@ export default {
   methods: {
     checkWidthTag() {
       this.$refs.tags.forEach((el) => {
-        const widthEl = parseInt(getComputedStyle(el).width);
+        if (this.isTagsWidth) {
+          this.$nextTick(() => {
+            if (el.previousElementSibling) {
+              const leftEl = parseInt(el.getBoundingClientRect().left);
+              const rightElPrev = parseInt(el.previousElementSibling.getBoundingClientRect().right);
+              const separator = el.querySelector('.separator');
+
+              const distance = (leftEl - rightElPrev) / 2;
+
+              separator.style.left = '-' + distance + 'px';
+            }
+          })
+        }
+
+        const rightEl = parseInt(el.getBoundingClientRect().right);
         const widthWin = document.documentElement.clientWidth;
 
-        if (widthWin <= widthEl) {
+        if (widthWin <= rightEl - 3) {
           el.style.height = '0';
           el.style.opacity = '0';
         } else {
@@ -69,20 +82,35 @@ export default {
           el.style.opacity = '1';
         }
       })
-    }
+    },
   }
 }
 </script>
 
 <style lang="scss">
 .tags {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  align-items: baseline;
+
+  &--width {
+    justify-content: space-between;
+  }
 
   &__tag {
-    align-self: flex-start;
+    position: relative;
     white-space: nowrap;
-    transition: .1s ease;
+
+    &:not(&:last-of-type) {
+      margin-right: 20px;
+    }
+
+    &:first-of-type::before {
+      content: none;
+    }
   }
+}
+
+.separator {
+  left: -10px;
 }
 </style>

@@ -1,18 +1,51 @@
 <template>
   <v-app>
-    <AppTags :tags="tags" />
+    <AppTags
+      v-for="(tags, index) in tagsList"
+      :key="index"
+      :tags="tags"
+      :isTagsWidth="false"
+    />
   </v-app>
 </template>
 
 <script>
 import AppTags from '@/components/AppTags';
 
-const tags = [
-  { title: 'Фридландские ворота Фридландские ворота Фридландские ворота Фридландские ворота', iconTitle: 'mdi-call-split' },
-  { title: 'Бранденбургские ворота', iconTitle: 'mdi-domain' },
-  { title: 'Закхаймские ворота', iconTitle: 'mdi-dialpad' },
-  { title: 'Россгартенские ворота Россгартенские ворота Россгартенские ворота', iconTitle: 'mdi-call-split' },
-  { title: 'Аусфальские ворота', iconTitle: 'mdi-domain' },
+const tagsList = [
+  [
+    { title: '5', icon: 'mdi-call-split' },
+    { title: 'Обзорная', icon: null },
+    { title: '28 марта', icon: 'mdi-domain' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+  ],
+  [
+    { title: '5', icon: 'mdi-call-split' },
+    { title: 'Обзорная', icon: null },
+    { title: '28 марта', icon: 'mdi-domain' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+  ],
+  [
+    { title: '5', icon: 'mdi-call-split' },
+    { title: 'Обзорная', icon: null },
+    { title: '28 марта', icon: 'mdi-domain' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+    { title: '6 часов', icon: 'mdi-call-split' },
+  ],
 ];
 
 export default {
@@ -24,7 +57,7 @@ export default {
 
   data() {
     return {
-      tags
+      tagsList
     }
   },
 };
@@ -32,40 +65,16 @@ export default {
 
 <style lang="scss">
 /*Сброс стилей*/
-*{
+* {
 	padding: 0;
 	margin: 0;
 	border: 0;
 }
-*,*:before,*:after{
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+
+ul {
+  li {
+    list-style: none;
+  }
 }
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
-
-nav,footer,header,aside{display: block;}
-
-html,body{
-	height: 100%;
-	width: 100%;
-	font-size: 100%;
-	line-height: 1.2;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-}
-input,button,textarea{font-family:inherit;}
-
-input::-ms-clear{display: none;}
-button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
-a {color: white;}
-a, a:visited, a:hover{text-decoration: none;}
-ul li{list-style: none;}
-img{max-width: 100%;}
-
-h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
 </style>
